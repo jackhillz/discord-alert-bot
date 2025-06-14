@@ -2,13 +2,12 @@ import discord
 from discord.ext import commands
 import logging
 import os
+from dotenv import load_dotenv
 
-# Load .env only when not on Replit
-if os.getenv("REPL_ID") is None:
-    from dotenv import load_dotenv
-    load_dotenv()
+# Always load environment variables from .env (optional in Render, but useful locally)
+load_dotenv()
 
-# Get the Discord token
+# Get the Discord token from environment
 token = os.getenv("DISCORD_TOKEN")
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
