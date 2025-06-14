@@ -2,12 +2,13 @@ import discord
 from discord.ext import commands
 import logging
 import os
-from dotenv import load_dotenv
 
-# Always load environment variables from .env (optional in Render, but useful locally)
-load_dotenv()
+# Only load dotenv if not already in Render
+if os.getenv("RENDER") is None:
+    from dotenv import load_dotenv
+    load_dotenv()
 
-# Get the Discord token from environment
+# Token from environment variable
 token = os.getenv("DISCORD_TOKEN")
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
