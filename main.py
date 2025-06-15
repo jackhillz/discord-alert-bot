@@ -1,3 +1,11 @@
+import os
+print("Launching bot...")
+
+token = os.getenv("DISCORD_TOKEN")
+print(f"Token retrieved: {'Yes' if token else 'No'}")
+
+# Make sure this is after all intents and bot setup
+bot.run(token)
 import discord
 from discord.ext import commands
 import logging
