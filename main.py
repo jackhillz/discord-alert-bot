@@ -3,14 +3,13 @@ from discord.ext import commands
 import logging
 import os
 
-import os
-
-# Only use load_dotenv locally
-if os.path.exists(".env"):
+# Load .env only when not on Replit
+if os.getenv("REPL_ID") is None:
     from dotenv import load_dotenv
     load_dotenv()
 
-token = os.getenv('DISCORD_TOKEN')
+# Get the Discord token
+token = os.getenv("DISCORD_TOKEN")
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 intents = discord.Intents.default()
